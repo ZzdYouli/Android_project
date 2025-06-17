@@ -1,28 +1,29 @@
 package com.example.demo
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.viewpager2.widget.ViewPager2
 import com.example.demo.ui.theme.DemoTheme
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            DemoTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
-                }
-            }
-        }
+        setContentView(R.layout.activity_main)
+
+        val viewPager = findViewById<ViewPager2>(R.id.viewPager)
+
+        // 创建 Fragment 列表
+        val fragments = listOf(
+            SimpleFragment.newInstance("这是第一个 Fragment",0),
+            SimpleFragment.newInstance("这是第二个 Fragment",1),
+            SimpleFragment.newInstance("这是第三个 Fragment",2)
+        )
+
+        viewPager.adapter = FragmentAdapter(this, fragments)
     }
 }
 
