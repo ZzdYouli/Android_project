@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
 
 class SimpleFragment : Fragment() {
 
@@ -31,17 +29,17 @@ class SimpleFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_simple, container, false)
         val textView = view.findViewById<TextView>(R.id.textView)
-        val button = view.findViewById<Button>(R.id.jumpButton)
+//        val button = view.findViewById<Button>(R.id.jumpButton)
 
         val text = arguments?.getString(ARG_TEXT)
         val index = arguments?.getInt(ARG_INDEX) ?: 0
 
         textView.text = text
 
-        button.setOnClickListener {
-            // 使用 ViewPager2 切换页面
-            (activity?.findViewById<ViewPager2>(R.id.viewPager))?.currentItem = (index + 1) % 3
-        }
+//        button.setOnClickListener {
+//            // 使用 ViewPager2 切换页面
+//            (activity?.findViewById<ViewPager2>(R.id.viewPager))?.currentItem = (index + 1) % 3
+//        }
 
         return view
     }
