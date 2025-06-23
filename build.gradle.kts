@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -36,9 +37,10 @@ android {
     buildFeatures {
         compose = true
         aidl = true
+        viewBinding = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.4"
     }
     packaging {
         resources {
@@ -60,6 +62,22 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation("androidx.viewpager2:viewpager2:1.1.0")
+    // Retrofit 核心库
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("io.github.scwang90:refresh-layout-kernel:2.0.5")
+    implementation ("io.github.scwang90:refresh-header-classics:2.0.5")
+    implementation ("io.github.scwang90:refresh-footer-classics:2.0.5")
+// Gson 转换器（配合 data class 使用）
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+// OkHttp 日志拦截器（可选，用于调试）
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation ("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.cardview:cardview:1.0.0")
+    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
